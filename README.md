@@ -1,7 +1,7 @@
 
 # cairn-doc2md
 
-A python script that will convert a Google doc downloaded as an html file into a markdown script.
+A python script that will convert a Google doc downloaded as an html file into a markdown file.
 Developed to prepare documents for release to cairnrpg.com but likely has utility beyond that.
 
 # Usage
