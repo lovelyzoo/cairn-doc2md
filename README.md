@@ -1,5 +1,5 @@
 
-# doc2md
+# cairn-doc2md
 
 A python script that will convert a Google doc downloaded as an html file into a markdown script.
 
