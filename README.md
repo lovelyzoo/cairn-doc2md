@@ -8,14 +8,29 @@ Developed to prepare documents for release to cairnrpg.com but likely has utilit
 
 Save your document using File->Download->'Web page' within the Google Docs UI. Extract the html file from the downloaded zip file.
 
-Now type:
+The command:
 ```
 python3 cairn-doc2md.py path/to/htmlfile
 ```
-and the document will be converted to markdown format and dumped to a file in the same directory as the cairn-doc2md script. The name of this file will be slugified from the title of the document.
+will convert the document to markdown format and dump it to a file in the same directory as `cairn-doc2md.py`. The name of this file will be a slugified version of the document title.
 
 Alternatively, if you want to specify the output file, do this:
 ```
 python3 cairn-doc2md.py path/to/htmlfile path/to/outfile
 ```
- 
+
+# Worked example
+
+The file `data/CairnAdventureConversionTemplate.html` has been downloaded from [this Google doc](https://docs.google.com/document/d/1-rfGGLmSc-SC5CL_8QXU5OSbNSyXF4yEfXDKwZrab2M/edit?usp=sharing).
+
+Now run 
+```
+python3 cairn-doc2md.py data/CairnAdventureConversionTemplate.html
+```
+within the directory that this README is located and a file named `adventure-title.md` will be created.
+
+View this file with the commandline:
+```
+cat adventure-title.md | less 
+```
+and you will notice that it is very similar to the [submission template](https://cairnrpg.com/submissions/adventure-conversions/#submission-template) on the Cairn website.
