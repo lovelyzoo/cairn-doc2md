@@ -2,6 +2,7 @@ import argparse
 from markdownify import markdownify as md
 from bs4 import BeautifulSoup
 import re
+from slugify import slugify
 
 preamble = '''---
 layout: default
@@ -18,9 +19,10 @@ if __name__ == "__main__":
                     description = 'Converts a google doc, exported as an html file, to markdown')
 	
 	parser.add_argument('infile')
-	parser.add_argument('outfile')
+	parser.add_argument('outfile', nargs='?', default=None)
 	
 	args = parser.parse_args()
+	outfile = args.outfile
 	
 	# Read the html file into bs4 object
 	with open(args.infile, 'r') as f:
@@ -32,11 +34,14 @@ if __name__ == "__main__":
 	# title is contained within the first p element
 	title = soup.find('p').text
 	preamble = preamble.format(title)
+	
+	if outfile is None:
+		outfile = slugify(title) + '.md'
 	  
 	# convert html to markdown
 	as_md = md(str(soup), heading_style="SETEXT", strip=['hr'], bullets = '-')
 	
-	with open(args.outfile, 'w') as f:
+	with open(outfile, 'w') as f:
 		f.write(preamble)
 		f.write('\n'*3)
 
